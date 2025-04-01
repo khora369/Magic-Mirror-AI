@@ -1,7 +1,7 @@
 streamlit
 langchain
 langchain-core
-langchain-huggingface
-sentence-transformers
-chromadb
+langchain-community
 langchain-chroma
+chromadb
+sentence-transformers
