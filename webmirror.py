@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain_community.llms import Ollama
+from langchain_ollama import OllamaLLM 
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.prompts import PromptTemplate
