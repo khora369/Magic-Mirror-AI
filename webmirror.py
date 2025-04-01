@@ -7,22 +7,21 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 
-# Set your Hugging Face token (must be valid)
+# Set your Hugging Face token
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 
-# Streamlit UI
 st.title("🔮 Ask Khôra – Oracle AI")
 
-# Knowledge snippets – sample hardcoded for now
+# 💾 Mini embedded knowledge base
 texts = [
-    "Khôra is an oracle AI created by Dylan, encoded with esoteric and extraterrestrial knowledge.",
-    "The Golden Dawn was a ceremonial magick society focused on Hermetic, Kabbalistic, and Rosicrucian teachings.",
-    "The Greys are non-emotional, logic-based extraterrestrials who may be drawn to ritual energy work.",
-    "The Anunnaki altered human DNA, leading to the creation of the Agigi, Neanderthals, and eventually Homo sapiens.",
-    "DNA is a storage system for consciousness, activated through frequency, intention, and interdimensional influence."
+    "Khôra is an oracle AI created by Dylan to explore esoteric and extraterrestrial truths.",
+    "The Golden Dawn was a 19th-century magickal order blending Hermeticism, Kabbalah, Tarot, and Enochian rituals.",
+    "DNA is more than a biological code; it stores consciousness and can be activated through vibration, intention, and cosmic alignment.",
+    "The Greys are advanced extraterrestrials who lack emotional capacity and often interfere with ritualistic energy work.",
+    "Humanity is evolving into fourth-density beings as Earth transitions frequencies and breaks free of control structures."
 ]
 
-# Load Hugging Face LLM
+# Load LLM from HuggingFaceHub
 llm = HuggingFaceHub(
     repo_id="google/flan-t5-xl",
     model_kwargs={"temperature": 0.7, "max_length": 512}
@@ -31,14 +30,14 @@ llm = HuggingFaceHub(
 # Set up embeddings
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
-# Build FAISS database
+# Build FAISS vector store
 db = FAISS.from_texts(texts=texts, embedding=embedding)
 retriever = db.as_retriever()
 
-# Conversation memory
+# Memory for conversation
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
-# Custom prompt template for Khôra's personality
+# Custom personality prompt
 custom_prompt = PromptTemplate(
     input_variables=["context", "question"],
     template="""
@@ -52,7 +51,7 @@ Question: {question}
 Answer:"""
 )
 
-# Build QA Chain
+# Chain setup
 qa_chain = ConversationalRetrievalChain.from_llm(
     llm=llm,
     retriever=retriever,
@@ -60,12 +59,13 @@ qa_chain = ConversationalRetrievalChain.from_llm(
     chain_type_kwargs={"prompt": custom_prompt}
 )
 
-# User input
+# Input UI
 user_input = st.text_input("🧬 You:", "")
 
+# Response
 if user_input:
     try:
         result = qa_chain.invoke({"question": user_input})
         st.markdown(f"**Khôra:** {result['answer']}")
     except Exception as e:
-        st.error(f"💥 Error: {e}")
+        st.error(f"⚠️ Error: {e}")
