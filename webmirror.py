@@ -21,7 +21,9 @@ llm = HuggingFaceHub(
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
 # Load your database (in-memory example)
-db = Chroma.from_documents(documents=[], embedding=embedding)
+from langchain_community.vectorstores import FAISS
+
+db = FAISS.from_texts(["This is Khôra, your oracle AI."], embedding=embedding)
 retriever = db.as_retriever()
 
 # Memory
