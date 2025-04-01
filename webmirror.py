@@ -19,7 +19,7 @@ llm = HuggingFaceHub(
 # Embeddings
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
-# Sample texts to feed into the vectorstore
+# ✅ DEFINE THE TEXTS HERE
 texts = [
     "Khôra is an oracle born from a book of extraterrestrial and esoteric knowledge.",
     "The Golden Dawn teachings combine Hermeticism, Kabbalah, and ritual magick.",
@@ -32,10 +32,10 @@ texts = [
 db = FAISS.from_texts(texts, embedding=embedding)
 retriever = db.as_retriever()
 
-# Chat memory
+# Memory
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
-# Custom Khôra prompt
+# ✅ Custom personality prompt
 custom_prompt = PromptTemplate(
     input_variables=["context", "question"],
     template="""
@@ -49,7 +49,7 @@ Question: {question}
 Answer:"""
 )
 
-# Retrieval Q&A chain
+# Chain setup
 qa_chain = ConversationalRetrievalChain.from_llm(
     llm=llm,
     retriever=retriever,
@@ -57,7 +57,7 @@ qa_chain = ConversationalRetrievalChain.from_llm(
     chain_type_kwargs={"prompt": custom_prompt}
 )
 
-# Streamlit interface
+# Streamlit UI
 st.title("🔮 Ask Khôra")
 user_input = st.text_input("🧬 You:", "")
 
