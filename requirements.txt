@@ -1,9 +1,7 @@
 streamlit
 langchain
 langchain-core
-langchain-openai
 langchain-huggingface
-langchain-chroma
-langchain-ollama
 sentence-transformers
 chromadb
+langchain-chroma
