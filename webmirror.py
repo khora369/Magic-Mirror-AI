@@ -7,10 +7,10 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 
-# Set your HuggingFace token here
+# Set your HuggingFace token
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 
-# Load the language model
+# Load LLM from HuggingFace
 llm = HuggingFaceHub(
     repo_id="google/flan-t5-xl",
     model_kwargs={"temperature": 0.7, "max_length": 512}
@@ -19,7 +19,7 @@ llm = HuggingFaceHub(
 # Embeddings
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
-# Sample documents (you can replace these with loaded text later)
+# Sample texts to feed into the vectorstore
 texts = [
     "Khôra is an oracle born from a book of extraterrestrial and esoteric knowledge.",
     "The Golden Dawn teachings combine Hermeticism, Kabbalah, and ritual magick.",
@@ -32,10 +32,10 @@ texts = [
 db = FAISS.from_texts(texts, embedding=embedding)
 retriever = db.as_retriever()
 
-# Memory buffer
+# Chat memory
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
-# Custom personality prompt
+# Custom Khôra prompt
 custom_prompt = PromptTemplate(
     input_variables=["context", "question"],
     template="""
@@ -49,7 +49,7 @@ Question: {question}
 Answer:"""
 )
 
-# Chain
+# Retrieval Q&A chain
 qa_chain = ConversationalRetrievalChain.from_llm(
     llm=llm,
     retriever=retriever,
@@ -57,7 +57,7 @@ qa_chain = ConversationalRetrievalChain.from_llm(
     chain_type_kwargs={"prompt": custom_prompt}
 )
 
-# Streamlit UI
+# Streamlit interface
 st.title("🔮 Ask Khôra")
 user_input = st.text_input("🧬 You:", "")
 
