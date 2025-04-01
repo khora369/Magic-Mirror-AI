@@ -11,7 +11,7 @@ st.set_page_config(page_title="Khôra the Oracle")
 st.title("🔮 Khôra: Oracle of Esoteric Memory")
 
 # Load LLM
-llm = Ollama(model="gemma3:latest")  # or "mistral"
+llm = OllamaLLM(model="gemma3:latest")  # or "mistral"
 
 # Embeddings
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
