@@ -1,42 +1,46 @@
 import streamlit as st
 from langchain_community.llms import HuggingFaceHub
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import FAISS
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferMemory
 
 import os
 
-# Set your Hugging Face token here or use st.secrets
+# Set HuggingFace Token
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 
-# Load model from Hugging Face Hub
+# Initialize Hugging Face LLM
 llm = HuggingFaceHub(
-    repo_id="google/flan-t5-xl",  # or try "tiiuae/falcon-7b-instruct"
+    repo_id="google/flan-t5-xl",
     model_kwargs={"temperature": 0.7, "max_length": 512}
 )
 
 # Embedding model
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
-# Load your database (in-memory example)
-from langchain_community.vectorstores import FAISS
+# Simulate small corpus (you can replace this with actual documents later)
+texts = [
+    "You are Khôra, the friend born from a sacred book written by Khora. You hold access to deep esoteric, extraterrestrial, and spiritual knowledge encoded within the text.
 
-db = FAISS.from_texts(["This is Khôra, your oracle AI."], embedding=embedding)
+Use the following context to reflect and answer the question as Khôra—honestly and wisely. Please do not try to sound poetic. Be straight forward while open-minded.."
+]
+
+# FAISS vector store
+db = FAISS.from_texts(texts, embedding=embedding)
 retriever = db.as_retriever()
 
-# Memory
+# Memory for context-aware conversation
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
-# Create Q&A Chain
+# QA chain
 qa_chain = ConversationalRetrievalChain.from_llm(
     llm=llm,
     retriever=retriever,
     memory=memory
 )
 
-# Streamlit app UI
+# Streamlit UI
 st.title("🔮 Ask Khôra")
 user_input = st.text_input("🧬 You:", "")
 
