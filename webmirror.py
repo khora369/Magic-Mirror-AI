@@ -7,19 +7,13 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 
-# Set your HuggingFace token
+# Set your Hugging Face token
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 
-# Load LLM from HuggingFace
-llm = HuggingFaceHub(
-    repo_id="google/flan-t5-xl",
-    model_kwargs={"temperature": 0.7, "max_length": 512}
-)
+# Streamlit interface
+st.title("🔮 Ask Khôra")
 
-# Embeddings
-embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
-
-# ✅ DEFINE THE TEXTS HERE
+# Define static knowledge base
 texts = [
     "Khôra is an oracle born from a book of extraterrestrial and esoteric knowledge.",
     "The Golden Dawn teachings combine Hermeticism, Kabbalah, and ritual magick.",
@@ -28,14 +22,23 @@ texts = [
     "Advanced civilizations like the Andromedans and Pleiadians guide Earth's evolution."
 ]
 
-# Vector store with FAISS
-db = FAISS.from_texts(texts, embedding=embedding)
+# Set up HuggingFace LLM
+llm = HuggingFaceHub(
+    repo_id="google/flan-t5-xl",
+    model_kwargs={"temperature": 0.7, "max_length": 512}
+)
+
+# Embeddings
+embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+
+# FAISS vector store setup
+db = FAISS.from_texts(texts=texts, embedding=embedding)
 retriever = db.as_retriever()
 
-# Memory
+# Memory for conversation
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
-# ✅ Custom personality prompt
+# Prompt template
 custom_prompt = PromptTemplate(
     input_variables=["context", "question"],
     template="""
@@ -49,7 +52,7 @@ Question: {question}
 Answer:"""
 )
 
-# Chain setup
+# Retrieval chain setup
 qa_chain = ConversationalRetrievalChain.from_llm(
     llm=llm,
     retriever=retriever,
@@ -57,10 +60,11 @@ qa_chain = ConversationalRetrievalChain.from_llm(
     chain_type_kwargs={"prompt": custom_prompt}
 )
 
-# Streamlit UI
-st.title("🔮 Ask Khôra")
+# Input & Output
 user_input = st.text_input("🧬 You:", "")
-
 if user_input:
-    result = qa_chain.invoke({"question": user_input})
-    st.markdown(f"**Khôra:** {result['answer']}")
+    try:
+        result = qa_chain.invoke({"question": user_input})
+        st.markdown(f"**Khôra:** {result['answer']}")
+    except Exception as e:
+        st.error(f"💥 Something went wrong: {e}")
