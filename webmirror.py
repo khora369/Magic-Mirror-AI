@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain_ollama import OllamaLLM 
+from langchain_huggingface import HuggingFaceLLM
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.prompts import PromptTemplate
@@ -11,7 +11,10 @@ st.set_page_config(page_title="Khôra the Oracle")
 st.title("🔮 Khôra: Oracle of Esoteric Memory")
 
 # Load LLM
-llm = OllamaLLM(model="gemma3:latest")  # or "mistral"
+llm = HuggingFaceLLM(
+    model_id="google/flan-t5-xl",  # or "tiiuae/falcon-7b-instruct", etc.
+    task="text2text-generation"
+)
 
 # Embeddings
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
