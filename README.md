@@ -38,7 +38,7 @@ This will open a browser window where you can begin a conversation with Khôra.
 
 Requirements
 
-Please excuse the massive amount of requirements, I will refine it later at some point. 
+Please excuse the massive amount of requirements on the actual requirements.txt, I will refine it later at some point. 
 
 Python 3.10+
 
