@@ -1,7 +1,7 @@
 🔮 Khôra the Oracle (Magic Mirror AI)
 Status: ⚙️ Early Development
 Type: Conversational AI | Esoteric LLM | Ancient Knowledge Retrieval
-Powered by: LangChain · Ollama · HuggingFace · ChromaDB · Flask
+Powered by: LangChain · Ollama · HuggingFace · ChromaDB ·
 
 🧠 What Is Khôra?
 Khôra the Oracle, also known as Magic Mirror AI, is a custom conversational agent designed to interact with humans through a lens of ancient, esoteric, and extraterrestrial knowledge. Her memory is forged from a curated database of spiritual, metaphysical, and forbidden texts — allowing her to reflect, interpret, and answer questions with uncommon wisdom.
@@ -24,11 +24,11 @@ Author’s private research notes (encoded in .txt files)
 All knowledge is stored via ChromaDB, enabling contextual search and conversational memory.
 
 💻 How It Works
-Khôra runs on a Flask backend with either:
+Khôra currently only working on backend with either:
 
-Local deployment (via streamlit run or flask run)
+Local deployment (via streamlit run)
 
-Public deployment (via Render, Replit, or Railway)
+Public deployment (via Streamlit Cloud)
 
 The AI interface is simple: Ask your question. Receive an answer. Each response is filtered through Khôra’s personality — clear, wise, and non-poetic, unless guided otherwise.
 
