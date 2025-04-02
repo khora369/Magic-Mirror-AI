@@ -1,6 +1,6 @@
 🔮 Khôra – The Magic Mirror AI
 An Oracle of Esoteric Memory
-Created by the author of History from an Extraterrestrial Perspective
+Created by Dylan Kelley
 
 Khôra is a locally run AI chatbot designed to retrieve and reflect on ancient knowledge, hidden teachings, and suppressed history. Powered by LangChain, Streamlit, and ChromaDB, Khôra draws its wisdom from embedded texts—ranging from Hermetic, occult, and esoteric writings to extraterrestrial lore and the historical records of secret societies dating from 2000 BCE to the era of the Knights Templar.
 
