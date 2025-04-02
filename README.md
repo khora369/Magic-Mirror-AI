@@ -17,21 +17,21 @@ Built with Python, Streamlit UI, LangChain, and HuggingFace embeddings
 
 Getting Started
 
-1. Clone this repository
+1. Clone this repository: 
 bash
 git clone https://github.com/yourusername/magic-mirror-ai.git
 cd magic-mirror-ai
 
-3. Create a virtual environment (optional but recommended)
+3. Create a virtual environment (optional but recommended) : 
 bash
 python -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 
-4. Install the requirements
+4. Install the requirements: 
 bash
 pip install -r requirements.txt
 
-5. Run the Oracle
+5. Run the Oracle: 
 bash
 streamlit run webmirror.py
 This will open a browser window where you can begin a conversation with Khôra.
