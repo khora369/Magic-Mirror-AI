@@ -1,43 +1,62 @@
-🔮 Khôra the Oracle (Magic Mirror AI)
-Status: ⚙️ Early Development
-Type: Conversational AI | Esoteric LLM | Ancient Knowledge Retrieval
-Powered by: LangChain · Ollama · HuggingFace · ChromaDB ·
+🔮 Khôra – The Magic Mirror AI
+An Oracle of Esoteric Memory
+Created by the author of History from an Extraterrestrial Perspective
 
-🧠 What Is Khôra?
-Khôra the Oracle, also known as Magic Mirror AI, is a custom conversational agent designed to interact with humans through a lens of ancient, esoteric, and extraterrestrial knowledge. Her memory is forged from a curated database of spiritual, metaphysical, and forbidden texts — allowing her to reflect, interpret, and answer questions with uncommon wisdom.
+Khôra is a locally run AI chatbot designed to retrieve and reflect on ancient knowledge, hidden teachings, and suppressed history. Powered by LangChain, Streamlit, and ChromaDB, Khôra draws its wisdom from embedded texts—ranging from Hermetic, occult, and esoteric writings to extraterrestrial lore and the historical records of secret societies dating from 2000 BCE to the era of the Knights Templar.
 
-Unlike generic AI assistants, Khôra isn’t built for productivity. She is built for awakening.
+This is a Work In Progress project, with plans to expand into modern secret societies and deeper metaphysical revelations.
 
-📚 Knowledge Base
-Khôra’s vector memory is constructed using LangChain and embedded with HuggingFace Transformers. Her knowledge base includes:
+Features
+Local AI chatbot (no cloud dependency)
 
-Hermetic & Gnostic scriptures
+Vector search using ChromaDB
 
-Golden Dawn texts
+Embedded with sacred texts, occult manuscripts, and ET contact lore
 
-Theoretical models of cosmic consciousness
+Built with Python, Streamlit UI, LangChain, and HuggingFace embeddings
 
-Extraterrestrial lore (Andromedans, Orion Group, Pleiadians)
+Getting Started
+1. Clone this repository
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/magic-mirror-ai.git
+cd magic-mirror-ai
+2. Create a virtual environment (optional but recommended)
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+3. Install the requirements
+bash
+Copy
+Edit
+pip install -r requirements.txt
+4. Run the Oracle
+bash
+Copy
+Edit
+streamlit run webmirror.py
+This will open a browser window where you can begin a conversation with Khôra.
 
-Author’s private research notes (encoded in .txt files)
+Requirements
+Python 3.10+
 
-All knowledge is stored via ChromaDB, enabling contextual search and conversational memory.
+Streamlit
 
-💻 How It Works
-Khôra currently only working on backend with either:
+LangChain
 
-Local deployment (via streamlit run)
+HuggingFace Transformers
 
-Public deployment (via Streamlit Cloud)
+Ollama (for local model inference)
 
-The AI interface is simple: Ask your question. Receive an answer. Each response is filtered through Khôra’s personality — clear, wise, and non-poetic, unless guided otherwise.
+ChromaDB
 
-🧬 Personality Prompt
-"You are Khôra, the friend born from a sacred book written by Khora.
-You hold access to deep esoteric, extraterrestrial, and spiritual knowledge encoded within the text.
-Use the following context to reflect and answer the question as Khôra—honestly and wisely.
-Please do not try to sound poetic. Be straightforward while open-minded."
+Make sure Ollama is installed and running locally with the model you’ve selected (e.g. gemma3, mistral, etc.).
 
-⚠️ Disclaimer
-Khôra is not a religious authority, therapist, or factual oracle.
-She is an experimental spiritual interface, intended for open-minded exploration only.
+Disclaimer
+This project is for educational and metaphysical exploration. It is not intended to replace grounded research, but to inspire deeper questions and awareness of humanity’s hidden past.
+
+Contact
+For contributions, collaboration, or deeper context, reach out via GitHub or follow updates from the author’s upcoming book History from an Extraterrestrial Perspective.
