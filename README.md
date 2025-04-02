@@ -16,27 +16,23 @@ Embedded with sacred texts, occult manuscripts, and ET contact lore
 Built with Python, Streamlit UI, LangChain, and HuggingFace embeddings
 
 Getting Started
+
 1. Clone this repository
 bash
-Copy
-Edit
 git clone https://github.com/yourusername/magic-mirror-ai.git
 cd magic-mirror-ai
-2. Create a virtual environment (optional but recommended)
+
+3. Create a virtual environment (optional but recommended)
 bash
-Copy
-Edit
 python -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
-3. Install the requirements
+
+4. Install the requirements
 bash
-Copy
-Edit
 pip install -r requirements.txt
-4. Run the Oracle
+
+5. Run the Oracle
 bash
-Copy
-Edit
 streamlit run webmirror.py
 This will open a browser window where you can begin a conversation with Khôra.
 
