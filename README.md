@@ -52,6 +52,7 @@ pip install -r requirements.txt
 
 
 2. Setup Environment
+   
 Create a .env file and add your bot token:
 
 DISCORD_BOT_TOKEN=your_token_here
