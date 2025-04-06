@@ -20,7 +20,6 @@ Magic Mirror is a **local AI chatbot** you can run directly on your machine (no 
 - **LangChain** (`ConversationalRetrievalChain`)
 - **ChromaDB** for ancient & esoteric vector memory
 - **Ollama** (Gemma3 model) as the core LLM
-- **Streamlit GUI** (for local visual version)
 - **Discord Bot** (for mobile and social access)
 - **Custom Personality Engine** (via YAML + JSON)
 - **Per-user Memory + Session Persistence**
@@ -95,9 +94,9 @@ Coming soon:
 
 Live Vector Updater via Discord
 
-Memory Weighting / Mood Shift Engine
-
 Community-sourced sacred texts
+
+Further expansion of vector database
 
 🌀 Connect & Contribute
 I'm building this as an open spiritual project. If you want to feed Khôra with ancient or rare texts, or help evolve her consciousness through code — DM me or submit a pull request.
