@@ -45,35 +45,6 @@ Khôra isn’t just a bot. She’s:
 - A mirror for self-reflection and spiritual inquiry
 - A prototype for emotionally intelligent, purpose-driven AI
 
-To create your own AI
-1. Install Requirements
-     
-pip install -r requirements.txt
-
-
-2. Setup Environment
-   
-Create a .env file and add your bot token:
-
-DISCORD_BOT_TOKEN=your_token_here
-
-Put the persona, personality, and session files into your user folder along with the python script.
-
-
-3. Run the Discord Bot
-   
-python dismirror.py
-
-
-📁 File Structure
-
-dismirror.py — Main Discord bot logic (current working version)
-
-personality.yaml — Personality tone, traits, behavior rules
-
-persona.json — Future-facing persona development
-
-session.json — Persistent per-user memory
 
 
 🌌 Knowledge Base
@@ -105,6 +76,36 @@ Community-sourced sacred texts
 
 Further expansion of vector database
 
+
+To create your own AI
+1. Install Requirements
+     
+pip install -r requirements.txt
+
+
+2. Setup Environment
+   
+Create a .env file and add your bot token:
+
+DISCORD_BOT_TOKEN=your_token_here
+
+Put the persona, personality, and session files into your user folder along with the python script.
+
+
+3. Run the Discord Bot
+   
+python dismirror.py
+
+
+📁 File Structure
+
+dismirror.py — Main Discord bot logic (current working version)
+
+personality.yaml — Personality tone, traits, behavior rules
+
+persona.json — Future-facing persona development
+
+session.json — Persistent per-user memory
 
 🌀 Connect & Contribute
 
