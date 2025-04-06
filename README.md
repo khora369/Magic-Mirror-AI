@@ -69,8 +69,6 @@ python dismirror.py
 
 dismirror.py — Main Discord bot logic (current working version)
 
-webmirror.py — Streamlit local GUI version
-
 personality.yaml — Personality tone, traits, behavior rules
 
 persona.json — Future-facing persona development
